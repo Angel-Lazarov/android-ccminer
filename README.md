@@ -16,9 +16,9 @@ chmod +x auto_ssh_install.sh
 3. Download ccminer, config, start:
 ```
 mkdir ccminer && cd ccminer
-wget https://raw.githubusercontent.com/Darktron/pre-compiled/generic/ccminer
-wget https://raw.githubusercontent.com/Darktron/pre-compiled/generic/config.json
-wget https://raw.githubusercontent.com/Darktron/pre-compiled/generic/start.sh
+wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/main/ccminer
+wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/main/config.json
+wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/main/start.sh
 chmod +x ccminer start.sh
 ```
 

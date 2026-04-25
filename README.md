@@ -11,6 +11,7 @@ yes | pkg install libjansson wget nano
 wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/refs/heads/main/auto_ssh_install.sh
 chmod +x auto_ssh_install.sh
 ./auto_ssh_install.sh
+rm auto_ssh_install.sh
 ```
 
 3. setup screen:
@@ -18,6 +19,7 @@ chmod +x auto_ssh_install.sh
 wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/refs/heads/main/install_screen.sh
 chmod +x install_screen.sh
 ./install_screen.sh
+rm install_screen.sh
 ```
 
 

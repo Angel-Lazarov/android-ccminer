@@ -32,18 +32,22 @@ echo -e "STATUS: ${CYAN}$SSH_STATUS${NC}"
 echo -e "USER:   ${CYAN}$USER_NAME${NC}"
 echo -e "IP:     ${CYAN}$IP_ADDR${NC}"
 echo -e "LOGIN:  ${YELLOW}ssh $USER_NAME@$IP_ADDR -p 8022${NC}"
+echo -e "${GREEN}-----------------------------------------------${NC}"
+echo -e "COMMANDS: reboot, poweroff, storage, clear"
 echo -e "${GREEN}===============================================${NC}"
 
 alias storage='termux-setup-storage'
+alias reboot='su -c reboot'
+alias poweroff='su -c "reboot -p"'
 BASHRC
 
-# 4. STORAGE ПРОВЕРКА
-if [ ! -d "$HOME/storage" ]; then
-    echo "[*] Please allow storage permission..."
-    termux-setup-storage
-else
-    echo "[-] Storage already configured."
-fi
+# 4. STORAGE ПРОВЕРКА (Закоментирана за избягване на popup)
+# if [ ! -d "$HOME/storage" ]; then
+#     echo "[*] Please allow storage permission..."
+#     termux-setup-storage
+# else
+#     echo "[-] Storage already configured."
+# fi
 
 # 5. ФИНАЛ
 echo "[+] Done! SSH is ready."

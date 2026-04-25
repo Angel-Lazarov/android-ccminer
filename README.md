@@ -13,7 +13,15 @@ chmod +x auto_ssh_install.sh
 ./auto_ssh_install.sh
 ```
 
-3. Download ccminer, config, start:
+3. setup screen:
+```
+wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/refs/heads/main/install_screen.sh
+chmod +x install_screen.sh
+./install_screen.sh
+```
+
+
+4. Download ccminer, config, start:
 ```
 mkdir ccminer && cd ccminer
 wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/main/ccminer

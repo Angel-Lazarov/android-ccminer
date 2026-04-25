@@ -22,11 +22,11 @@ wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/main/start.
 chmod +x ccminer start.sh
 ```
 
-wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/refs/heads/main/auto_ssh_install.sh
 
 
 
 -----------8-------------------------------
+wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/refs/heads/main/auto_ssh_install.sh
 
 yes | pkg update && pkg upgrade
 

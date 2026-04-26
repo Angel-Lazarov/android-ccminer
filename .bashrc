@@ -40,13 +40,15 @@ if screen -list 2>/dev/null | grep -q "Dead\|Remote"; then
 fi
 
 # 2. start miner if not running
-if ! pgrep -f "ccminer" >/dev/null 2>&1; then
+if ! pgrep -f "ccminer" >/dev/null 2>&1 || ! screen -list | grep -q "ccminer"; then
+	pkill -9 ccminer >/dev/null 2>&1
     cd "$HOME/ccminer" && screen -dmS ccminer ./start.sh
 fi
 
 # ccminer control functions
 miner_start() {
-   if ! pgrep -f "ccminer" >/dev/null 2>&1; then
+   if ! pgrep -f "ccminer" >/dev/null 2>&1 || ! screen -list | grep -q "ccminer"; then
+   pkill -9 ccminer >/dev/null 2>&1
         cd "$HOME/ccminer" && screen -dmS ccminer ./start.sh
         echo "[✓] ccminer started"
     else

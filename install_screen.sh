@@ -32,7 +32,6 @@ cat << SCREENRC > "$HOME/.screenrc"
 startup_message off
 hardstatus alwayslastline
 hardstatus string "%{= bW} USER1: $C_USER | IP: $C_IP %=%d.%m.%Y | %c "
-
 SCREENRC
 
 # 3. Инжектиране в .bashrc
@@ -43,13 +42,11 @@ echo "[*] Injecting ccminer auto-start into bashrc..."
 if ! grep -q "ccminer_screen_autostart" "$BASHRC"; then
 
 cat << 'EOF' >> "$BASHRC"
-
 # ccminer_screen_autostart
 if ! screen -list | grep -q "ccminer"; then
     cd "$HOME/ccminer" && screen -dmS ccminer ./start.sh
 fi
 # ccminer_screen_autostart
-
 EOF
 
     echo "[✓] Injected successfully"

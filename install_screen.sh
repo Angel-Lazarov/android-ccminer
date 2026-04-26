@@ -28,11 +28,11 @@ pkill -9 screen
 chmod 644 "$HOME/.screenrc" 2>/dev/null
 rm -rf "$HOME/.screenrc"
 
-cat << SCREENRC > "$HOME/.screenrc"
+cat << EOF > "$HOME/.screenrc"
 startup_message off
 hardstatus alwayslastline
-hardstatus string "%{= 7;4} USER: u0_a157 | IP: 192.168.2.114 %=%d.%m.%Y | %c %{-b}"
-SCREENRC
+hardstatus string "%{= 7;4} USER: $C_USER | IP: $C_IP %=%d.%m.%Y | %c %{-b}"
+EOF
 
 # 3. Инжектиране в .bashrc
 BASHRC="$HOME/.bashrc"

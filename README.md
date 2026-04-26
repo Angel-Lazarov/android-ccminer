@@ -28,6 +28,7 @@ chmod +x ccminer start.sh
 wget https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/refs/heads/main/install_screen.sh
 chmod +x install_screen.sh
 ./install_screen.sh
+source ~/.bashrc
 ```
 
 5. AutoStart App Manager

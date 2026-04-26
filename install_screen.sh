@@ -22,11 +22,7 @@ fi
 # 2. СЪЗДАВАНЕ НА .SCREENRC (Винаги се изпълнява)
 echo "[*] Configuring screen hardstatus..."
 C_IP=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n 1)
-C_USER=$(whoami
-
-BLUE_BG='\033[44m'
-WHITE_FG='\033[1;37m'
-RESET='\033[0m'
+C_USER=$(whoami)
 
 pkill -9 screen
 chmod 644 "$HOME/.screenrc" 2>/dev/null
@@ -35,8 +31,8 @@ rm -rf "$HOME/.screenrc"
 cat << SCREENRC > "$HOME/.screenrc"
 startup_message off
 hardstatus alwayslastline
-# Използваме директно твоите цветове тук
-hardstatus string "${BLUE_BG}${WHITE_FG} USER: $C_USER | IP: $C_IP %=%d.%m.%Y | %c ${RESET}"
+hardstatus string "%{= bW} USER: $C_USER | IP: $C_IP %=%d.%m.%Y | %c "
+
 SCREENRC
 
 # 3. Инжектиране в .bashrc

@@ -1,5 +1,10 @@
 # android-ccminer
 
+1. Get Termux:
+```
+https://raw.githubusercontent.com/Angel-Lazarov/android-ccminer/main/termux-app_v0.118.0%2Bgithub-debug_arm64-v8a.apk
+```
+
 2. Get Termux ready:
 ```
 yes | pkg update && pkg upgrade

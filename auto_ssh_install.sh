@@ -34,6 +34,7 @@ echo -e "IP:     ${CYAN}$IP_ADDR${NC}"
 echo -e "LOGIN:  ${YELLOW}ssh $USER_NAME@$IP_ADDR -p 8022${NC}"
 echo -e "${GREEN}-----------------------------------------------${NC}"
 echo -e "COMMANDS: reboot, poweroff, storage, clear"
+echo -e "MINER COMMANDS: miner_start, miner_screen"
 echo -e "${GREEN}===============================================${NC}"
 
 alias storage='termux-setup-storage'

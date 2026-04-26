@@ -2,6 +2,7 @@
 
 echo "[*] Checking if screen is installed..."
 
+# 1. Инсталация (само ако липсва)
 if command -v screen >/dev/null 2>&1; then
     echo "[✓] screen is already installed"
 else
@@ -12,23 +13,21 @@ else
 
     if command -v screen >/dev/null 2>&1; then
         echo "[✓] screen installed successfully"
-
-        echo "[*] Configuring screen hardstatus..."
-        
-        # Използваме кавички около 'SCREENRC', за да запазим символите % чисти
-        # Използваме вградените в screen кодове %u (user) и %H (host/IP)
-        cat << 'SCREENRC' > "$HOME/.screenrc"
-startup_message off
-hardstatus alwayslastline
-hardstatus string "%{= gk} USER: %u %{= wk} | %{= cy} IP: %H %{= wk} | %{= My} %c"
-SCREENRC
-
     else
         echo "[X] installation failed"
         exit 1
     fi
 fi
 
+# 2. СЪЗДАВАНЕ НА .SCREENRC (Винаги се изпълнява)
+echo "[*] Configuring screen hardstatus..."
+        cat << 'SCREENRC' > "$HOME/.screenrc"
+startup_message off
+hardstatus alwayslastline
+hardstatus string "%{= gk} USER: %u %{= wk} | %{= cy} IP: %H %{= wk} | %{= My} %c"
+SCREENRC
+
+# 3. Инжектиране в .bashrc
 BASHRC="$HOME/.bashrc"
 
 echo "[*] Injecting ccminer auto-start into bashrc..."

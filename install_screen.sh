@@ -42,11 +42,44 @@ echo "[*] Injecting ccminer auto-start into bashrc..."
 if ! grep -q "ccminer_screen_autostart" "$BASHRC"; then
 
 cat << 'EOF' >> "$BASHRC"
-# ccminer_screen_autostart
-if ! screen -list | grep -q "ccminer"; then
+# ccminer auto-start (single instance + repair)
+
+# 1. fix broken screen state
+if screen -list 2>/dev/null | grep -q "Dead\|Remote"; then
+    screen -wipe >/dev/null 2>&1
+    sleep 2
+
+    if screen -list 2>/dev/null | grep -q "Dead\|Remote"; then
+        rm -rf ~/.screen 2>/dev/null
+    fi
+fi
+
+# 2. start miner if not running
+if ! pgrep -f "ccminer" >/dev/null 2>&1 || ! screen -list | grep -q "ccminer"; then
+	pkill -9 ccminer >/dev/null 2>&1
     cd "$HOME/ccminer" && screen -dmS ccminer ./start.sh
 fi
-# ccminer_screen_autostart
+
+# ccminer control functions
+miner_start() {
+   if ! pgrep -f "ccminer" >/dev/null 2>&1 || ! screen -list | grep -q "ccminer"; then
+   pkill -9 ccminer >/dev/null 2>&1
+        cd "$HOME/ccminer" && screen -dmS ccminer ./start.sh
+        echo "[✓] ccminer started"
+    else
+        echo "[✓] ccminer already running"
+    fi
+}
+
+miner_screen() {
+    if screen -list | grep -q "ccminer"; then
+        screen -x ccminer
+    else
+        echo "[X] ccminer screen not found"
+    fi
+}
+sleep 3
+miner_screen
 EOF
 
     echo "[✓] Injected successfully"

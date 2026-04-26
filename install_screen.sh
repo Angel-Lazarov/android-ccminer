@@ -21,13 +21,15 @@ fi
 
 # 2. СЪЗДАВАНЕ НА .SCREENRC (Винаги се изпълнява)
 echo "[*] Configuring screen hardstatus..."
-CURRENT_IP=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n 1)
-CURRENT_USER=$(whoami)
+C_IP=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n 1)
+C_USER=$(whoami)
 
 cat << SCREENRC > "$HOME/.screenrc"
 startup_message off
 hardstatus alwayslastline
-hardstatus string "%{= gk} USER: $CURRENT_USER %{= wk} | %{= cy} IP: $CURRENT_IP %{= wk} | %{= My} %c"
+# Плътен син фон (%{= bW}) и бял текст
+# b = син фон, W = бял текст
+hardstatus string "%{= bW} USER: $C_USER | IP: $C_IP %=%d.%m.%Y | %c "
 SCREENRC
 
 # 3. Инжектиране в .bashrc

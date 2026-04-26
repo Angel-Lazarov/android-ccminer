@@ -31,7 +31,7 @@ rm -rf "$HOME/.screenrc"
 cat << SCREENRC > "$HOME/.screenrc"
 startup_message off
 hardstatus alwayslastline
-hardstatus string "%{= 4;7} USER2: $C_USER | IP: $C_IP %=%d.%m.%Y | %c "
+hardstatus string "%{=b 74} USER1: $C_USER | IP: $C_IP %=%d.%m.%Y | %c "
 SCREENRC
 
 # 3. Инжектиране в .bashrc

@@ -20,16 +20,19 @@ else
 fi
 
 # 2. СЪЗДАВАНЕ НА .SCREENRC (Винаги се изпълнява)
-echo "[*] Configuring screen hardstatus..."
-C_IP=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n 1)
-C_USER=$(whoami)
+        echo "[*] Configuring screen hardstatus..."
+        C_IP=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n 1)
+        C_USER=$(whoami)
 
-cat << SCREENRC > "$HOME/.screenrc"
+        BLUE_BG='\033[44m'
+        WHITE_FG='\033[1;37m'
+        RESET='\033[0m'
+
+        cat << SCREENRC > "$HOME/.screenrc"
 startup_message off
 hardstatus alwayslastline
-# Плътен син фон (%{= bW}) и бял текст
-# b = син фон, W = бял текст
-hardstatus string "%{= bW} USER: $C_USER | IP: $C_IP %=%d.%m.%Y | %c "
+# Използваме директно твоите цветове тук
+hardstatus string "${BLUE_BG}${WHITE_FG} USER: $C_USER | IP: $C_IP %=%d.%m.%Y | %c ${RESET}"
 SCREENRC
 
 # 3. Инжектиране в .bashrc

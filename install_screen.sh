@@ -26,9 +26,11 @@ C_USER=$(whoami
 
 BLUE_BG='\033[44m'
 WHITE_FG='\033[1;37m'
-RESET='\033[0m
+RESET='\033[0m'
 
-rm -f "$HOME/.screenrc
+pkill -9 screen
+chmod 644 "$HOME/.screenrc" 2>/dev/null
+rm -rf "$HOME/.screenrc"
 
 cat << SCREENRC > "$HOME/.screenrc"
 startup_message off

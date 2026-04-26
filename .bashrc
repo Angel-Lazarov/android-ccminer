@@ -13,6 +13,7 @@ CYAN='\033[1;36m'
 YELLOW='\033[1;33m'
 NC='\033[0m'
 
+# clear
 echo -e "${GREEN}===============================================${NC}"
 echo -e "STATUS: ${CYAN}$SSH_STATUS${NC}"
 echo -e "USER:   ${CYAN}$USER_NAME${NC}"
@@ -26,7 +27,6 @@ echo -e "${GREEN}===============================================${NC}"
 alias storage='termux-setup-storage'
 alias reboot='su -c reboot'
 alias poweroff='su -c "reboot -p"'
-
 # ccminer auto-start (single instance + repair)
 
 # 1. fix broken screen state

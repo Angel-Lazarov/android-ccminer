@@ -12,6 +12,17 @@ else
 
     if command -v screen >/dev/null 2>&1; then
         echo "[✓] screen installed successfully"
+
+        echo "[*] Configuring screen hardstatus..."
+        CURRENT_IP=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n 1)
+        CURRENT_USER=$(whoami)
+
+        cat << SCREENRC > "$HOME/.screenrc"
+startup_message off
+hardstatus alwayslastline
+hardstatus string "%{= gk} USER: $CURRENT_USER %{= wk} | %{= cy} IP: $CURRENT_IP %{= wk} | %{= My} %c"
+SCREENRC
+
     else
         echo "[X] installation failed"
         exit 1

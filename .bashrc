@@ -61,3 +61,5 @@ miner_screen() {
         echo "[X] ccminer screen not found"
     fi
 }
+sleep 3
+miner_screen

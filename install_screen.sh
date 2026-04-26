@@ -14,13 +14,13 @@ else
         echo "[✓] screen installed successfully"
 
         echo "[*] Configuring screen hardstatus..."
-        CURRENT_IP=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{print $2}' | cut -d/ -f1 | head -n 1)
-        CURRENT_USER=$(whoami)
-
+        
+        # Използваме кавички около 'SCREENRC', за да запазим символите % чисти
+        # Използваме вградените в screen кодове %u (user) и %H (host/IP)
         cat << 'SCREENRC' > "$HOME/.screenrc"
 startup_message off
 hardstatus alwayslastline
-hardstatus string "%{= gk} USER: $CURRENT_USER %{= wk} | %{= cy} IP: $CURRENT_IP %{= wk} | %{= My} %c"
+hardstatus string "%{= gk} USER: %u %{= wk} | %{= cy} IP: %H %{= wk} | %{= My} %c"
 SCREENRC
 
     else
